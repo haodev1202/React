@@ -36,6 +36,16 @@ function App() {
         console.log(4);
     } , [fullName])
 
+    useEffect(() => {
+      const clickWindow = () => console.log("Click window");
+      window.addEventListener('click' , clickWindow);
+    
+      // sẽ được gọi trước khi component được unmount
+      return () => {
+        window.removeEventListener('click' , clickWindow);
+      }
+    }, [third])
+    
 
     console.log("Tran van hao");
     return (
